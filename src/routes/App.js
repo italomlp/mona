@@ -23,18 +23,16 @@ export default function Routes() {
 
   return (
     <MemoryRouter>
-      <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
-        <Sidebar routes={routesMeta} />
-        <Switch>
-          {routesMeta.map((route, index) => (
-            <Route
-              key={String(index)}
-              path={route.path}
-              component={route.component}
-            />
-          ))}
-        </Switch>
-      </div>
+      <Sidebar routes={routesMeta} />
+      <Switch>
+        {routesMeta.map((route, index) => (
+          <Route
+            key={String(index)}
+            path={route.path}
+            component={route.component}
+          />
+        ))}
+      </Switch>
     </MemoryRouter>
   );
 }

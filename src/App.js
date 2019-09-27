@@ -16,8 +16,8 @@ function App() {
   return (
     <Provider store={store}>
       <MyThemeProvider>
+        <GlobalStyles />
         <Router history={history}>
-          <GlobalStyles />
           <Routes />
         </Router>
       </MyThemeProvider>
