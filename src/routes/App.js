@@ -1,9 +1,9 @@
 import React from 'react';
 import { MemoryRouter, Switch, Route } from 'react-router-dom';
 
-import Main from './pages/Main';
-import Trash from './pages/Trash';
-import { Sidebar } from './components';
+import Main from '../pages/Main';
+import Trash from '../pages/Trash';
+import { Sidebar } from '../components';
 
 export default function Routes() {
   const routesMeta = [
@@ -30,7 +30,6 @@ export default function Routes() {
             <Route
               key={String(index)}
               path={route.path}
-              exact
               component={route.component}
             />
           ))}

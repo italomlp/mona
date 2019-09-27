@@ -1,3 +1,7 @@
-import { all } from 'redux-saga/effects';
+import { all, takeLatest } from 'redux-saga/effects';
 
-export default all([]);
+import { TYPES } from './actions';
+
+export function* signIn() {}
+
+export default all([takeLatest(TYPES.signInRequest, signIn)]);

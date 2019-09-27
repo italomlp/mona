@@ -24,5 +24,8 @@ export const MyThemeProvider = ({ children }) => {
 };
 
 MyThemeProvider.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element,
+  ]).isRequired,
 };
