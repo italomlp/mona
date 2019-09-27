@@ -29,4 +29,9 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  #root {
+    display: flex;
+    flex-direction: row;
+  }
 `;
