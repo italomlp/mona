@@ -24,6 +24,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'react/require-default-props': 'off',
     'no-underscore-dangle': 'off',
-    'no-console': ['error', { allow: ['tron'] }]
+    'no-console': ['error', { allow: ['tron'] }],
+    'no-param-reassign': 'off'
   }
 };
