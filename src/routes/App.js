@@ -28,6 +28,7 @@ export default function Routes() {
         {routesMeta.map((route, index) => (
           <Route
             key={String(index)}
+            exact
             path={route.path}
             component={route.component}
           />
