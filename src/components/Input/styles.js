@@ -39,3 +39,9 @@ export const Input = styled.input`
   background: transparent;
   border: none;
 `;
+
+export const Error = styled.span`
+  color: #bb3333;
+  margin-bottom: 10px;
+  align-self: flex-start;
+`;
