@@ -9,13 +9,20 @@ const INITIAL_STATE = {
 };
 
 export default function auth(state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case TYPES.signInSuccess:
-      return produce(state, draft => {
+  return produce(state, draft => {
+    switch (action.type) {
+      case TYPES.signInRequest:
+        draft.loading = true;
+        break;
+      case TYPES.signInSuccess:
         draft.token = action.payload.token;
         draft.signed = true;
-      });
-    default:
-      return state;
-  }
+        draft.loading = false;
+        break;
+      case TYPES.signFailure:
+        draft.loading = false;
+        break;
+      default:
+    }
+  });
 }
