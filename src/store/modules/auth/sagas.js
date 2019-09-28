@@ -58,8 +58,14 @@ export function setToken({ payload }) {
   }
 }
 
+export function signOut() {
+  Api.updateToken(null);
+  history.push('/login');
+}
+
 export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest(TYPES.signInRequest, signIn),
   takeLatest(TYPES.signUpRequest, signUp),
+  takeLatest(TYPES.signOut, signOut),
 ]);

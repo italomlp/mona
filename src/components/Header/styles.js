@@ -18,6 +18,12 @@ export const Content = styled.div`
     color: ${textColor};
   }
 
+  button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+
   & > div > div {
     display: flex;
     justify-content: flex-end;
