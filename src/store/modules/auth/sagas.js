@@ -14,6 +14,7 @@ export function* signIn({ payload }) {
 
     const { token, user } = response.data;
 
+    Api.updateToken(token);
     yield put(signInSuccess(token, user));
 
     history.push('/');
@@ -47,7 +48,18 @@ export function* signUp({ payload }) {
   }
 }
 
+export function setToken({ payload }) {
+  if (!payload) return;
+
+  const { token } = payload.auth;
+
+  if (token) {
+    Api.updateToken(token);
+  }
+}
+
 export default all([
+  takeLatest('persist/REHYDRATE', setToken),
   takeLatest(TYPES.signInRequest, signIn),
   takeLatest(TYPES.signUpRequest, signUp),
 ]);

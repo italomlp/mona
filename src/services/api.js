@@ -9,9 +9,9 @@ class Api {
 
   updateToken = token => {
     if (token) {
-      this.instanceApi.defaults.headers.Authentication = `Bearer ${token}`;
+      this.instanceApi.defaults.headers.Authorization = `Bearer ${token}`;
     } else {
-      this.instanceApi.defaults.headers.Authentication = null;
+      this.instanceApi.defaults.headers.Authorization = null;
     }
   };
 
