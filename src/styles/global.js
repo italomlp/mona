@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 import 'react-toastify/dist/ReactToastify.css';
+import 'megadraft/dist/css/megadraft.css';
 
 import { backgroundColor, textColor } from './theme';
 

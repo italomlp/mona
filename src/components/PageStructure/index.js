@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import Split from 'react-split';
 
 import PropTypes from 'prop-types';
 
-import { GutterContainer, Gutter } from './styles';
+import { MegadraftEditor, editorStateFromRaw } from 'megadraft';
+
+import { GutterContainer, Gutter, Editor } from './styles';
 
 export default function PageStructure({ notesList = [] }) {
+  const [editorState, setEditorState] = useState(editorStateFromRaw(null));
+
   function createGutter() {
     const gutter = document.createElement('div');
     gutter.innerHTML = renderToStaticMarkup(
@@ -36,9 +40,14 @@ export default function PageStructure({ notesList = [] }) {
             <div key={note._id}>{String(note.content)}</div>
           ))}
       </div>
-      <div>
-        <p>Note content</p>
-      </div>
+      <Editor>
+        <MegadraftEditor
+          sidebarRendererFn={() => null}
+          placeholder="Digite aqui"
+          editorState={editorState}
+          onChange={state => setEditorState(state)}
+        />
+      </Editor>
     </Split>
   );
 }
