@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { Splitter } from '../../components';
+import NotesList from '../../components/NotesList';
+import Editor from '../../components/Editor';
 
 // import { Container } from './styles';
 
@@ -14,5 +16,10 @@ const notes = [
 ];
 
 export default function Trash() {
-  return <Splitter notesList={notes} />;
+  return (
+    <Splitter
+      leftComponent={<NotesList notes={notes} />}
+      rightComponent={<Editor />}
+    />
+  );
 }

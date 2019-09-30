@@ -12,5 +12,5 @@ export const Content = styled.div`
   display: flex;
   flex-direction: row;
   flex: 1;
-  max-height: calc(100% - 65px);
+  max-height: calc(100% - 60px);
 `;
