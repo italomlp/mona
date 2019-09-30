@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { PageStructure } from '../../components';
+import { Splitter } from '../../components';
+import { listNotesRequest } from '../../store/modules/notes/actions';
 
 // import { Container } from './styles';
 
-const notes = [
+const DEFAULT_NOTES = [
   {
     _id: '5d8bd6b922feb057e1a29d0c',
     content: 'olá mundo 3',
@@ -26,5 +28,12 @@ const notes = [
 ];
 
 export default function Main() {
-  return <PageStructure notesList={notes} />;
+  const dispatch = useDispatch();
+  const notes = useSelector(state => state.notes.notes);
+
+  useEffect(() => {
+    dispatch(listNotesRequest());
+  }, []);
+
+  return <Splitter notesList={notes || DEFAULT_NOTES} />;
 }

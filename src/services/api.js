@@ -26,6 +26,9 @@ class Api {
   updateMe = data => this.instanceApi.put('/users', data);
 
   getMe = () => this.instanceApi.get('/users');
+
+  // ------------------- --> NOTES ENDPOINTs <-- -------------------
+  listNotes = () => this.instanceApi.get('/notes');
 }
 
 export default new Api();

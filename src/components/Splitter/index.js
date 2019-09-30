@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import Split from 'react-split';
 
 import PropTypes from 'prop-types';
 
-import { MegadraftEditor, editorStateFromRaw } from 'megadraft';
+import { GutterContainer, Gutter } from './styles';
+import NotesList from '../NotesList';
+import Editor from '../Editor';
 
-import { GutterContainer, Gutter, Editor } from './styles';
-
-export default function PageStructure({ notesList = [] }) {
-  const [editorState, setEditorState] = useState(editorStateFromRaw(null));
-
+export default function Splitter({ notesList = [] }) {
   function createGutter() {
     const gutter = document.createElement('div');
     gutter.innerHTML = renderToStaticMarkup(
@@ -34,25 +32,13 @@ export default function PageStructure({ notesList = [] }) {
       style={{ display: 'flex', flexDirection: 'row', width: '100%' }}
       gutter={createGutter}
     >
-      <div>
-        {notesList.length &&
-          notesList.map(note => (
-            <div key={note._id}>{String(note.content)}</div>
-          ))}
-      </div>
-      <Editor>
-        <MegadraftEditor
-          sidebarRendererFn={() => null}
-          placeholder="Digite aqui"
-          editorState={editorState}
-          onChange={state => setEditorState(state)}
-        />
-      </Editor>
+      <NotesList notes={notesList} />
+      <Editor />
     </Split>
   );
 }
 
-PageStructure.propTypes = {
+Splitter.propTypes = {
   notesList: PropTypes.arrayOf(
     PropTypes.shape({
       content: PropTypes.string.isRequired,

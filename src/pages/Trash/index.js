@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PageStructure } from '../../components';
+import { Splitter } from '../../components';
 
 // import { Container } from './styles';
 
@@ -14,5 +14,5 @@ const notes = [
 ];
 
 export default function Trash() {
-  return <PageStructure notesList={notes} />;
+  return <Splitter notesList={notes} />;
 }
