@@ -17,14 +17,14 @@ export default function Input({ icon, isUnformComponent, name, ...restProps }) {
   const field = useField(name);
 
   useEffect(() => {
-    if (isUnformComponent) {
+    if (isUnformComponent && ref.current) {
       field.registerField({
         name: field.fieldName,
         ref: ref.current,
         path: 'value',
       });
     }
-  }, [ref.current, field.fieldName, isUnformComponent]); // eslint-disable-line
+  }, [ref, field.fieldName, isUnformComponent]); // eslint-disable-line
 
   function focusInput() {
     ref.current.focus();
@@ -38,7 +38,11 @@ export default function Input({ icon, isUnformComponent, name, ...restProps }) {
             <Icon name={icon} />
           </IconContainer>
         )}
-        <StyledInput ref={ref} {...restProps} />
+        <StyledInput
+          ref={ref}
+          {...restProps}
+          defaultValue={field.defaultValue}
+        />
       </Container>
       {field.error && <Error>{field.error}</Error>}
     </>

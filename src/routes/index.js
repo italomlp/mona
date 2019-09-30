@@ -6,6 +6,7 @@ import AppRouter from './App';
 
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
+import Profile from '../pages/Profile';
 
 export default function Routes() {
   return (
@@ -13,7 +14,8 @@ export default function Routes() {
       <Route path="/login" exact component={SignIn} />
       <Route path="/register" component={SignUp} />
 
-      <Route path="/" isPrivate component={AppRouter} />
+      <Route path="/" isPrivate exact component={AppRouter} />
+      <Route path="/profile" isPrivate exact component={Profile} />
     </Switch>
   );
 }

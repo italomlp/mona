@@ -1,7 +1,10 @@
 import produce from 'immer';
 
+import { TYPES } from './actions';
+
 const INITIAL_STATE = {
   profile: null,
+  loading: false,
 };
 
 export default function user(state = INITIAL_STATE, action) {
@@ -12,6 +15,16 @@ export default function user(state = INITIAL_STATE, action) {
         break;
       case '@auth/SIGN_OUT':
         draft.profile = null;
+        break;
+      case TYPES.updateProfileRequest:
+        draft.loading = true;
+        break;
+      case TYPES.updateProfileSuccess:
+        draft.profile = action.payload.profile;
+        draft.loading = false;
+        break;
+      case TYPES.updateProfileFailure:
+        draft.loading = false;
         break;
       default:
     }

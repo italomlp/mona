@@ -5,7 +5,7 @@ import { Link as DefaultLink } from 'react-router-dom';
 import Colors from '../../styles/colors';
 
 export const Container = styled.div`
-  height: 100vh;
+  height: 100%;
   min-width: 200px;
   border-right: 1px solid #88888822;
   padding: 10px;
