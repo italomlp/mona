@@ -29,6 +29,11 @@ class Api {
 
   // ------------------- --> NOTES ENDPOINTs <-- -------------------
   listNotes = () => this.instanceApi.get('/notes');
+
+  updateNote = (id, note) =>
+    this.instanceApi.put(`/notes/${id}`, {
+      ...note,
+    });
 }
 
 export default new Api();

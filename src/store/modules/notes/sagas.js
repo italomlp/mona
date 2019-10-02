@@ -3,12 +3,16 @@ import { toast } from 'react-toastify';
 
 import Api from '../../../services/api';
 
-import { TYPES, listNotesSuccess, notesFailure } from './actions';
+import {
+  TYPES,
+  listNotesSuccess,
+  notesFailure,
+  updateNoteSuccess,
+} from './actions';
 
 export function* listNotes() {
   try {
     const response = yield call(Api.listNotes);
-    console.tron.logImportant('chega aqui', response);
     yield put(listNotesSuccess(response.data));
   } catch (error) {
     toast.error('Erro ao listar notas, tente novamente mais tarde');
@@ -18,7 +22,21 @@ export function* listNotes() {
 
 export function createNote() {}
 
-export function updateNote() {}
+export function* updateNote({ payload }) {
+  try {
+    const { note } = payload;
+
+    const response = yield call(Api.updateNote, note._id, note);
+    console.tron.logImportant('chega aqui', payload);
+
+    toast.success('Salvo com sucesso');
+    yield put(updateNoteSuccess(response.data));
+  } catch (error) {
+    console.tron.error(error);
+    toast.error('Erro ao salvar nota, tente novamente mais tarde');
+    yield put(notesFailure());
+  }
+}
 
 export default all([
   takeLatest(TYPES.listNotesRequest, listNotes),

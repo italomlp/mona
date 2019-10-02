@@ -22,10 +22,10 @@ export function listNotesSuccess(notes) {
     payload: { notes },
   };
 }
-export function updateNoteRequest(id, note) {
+export function updateNoteRequest(note) {
   return {
     type: TYPES.updateNoteRequest,
-    payload: { id, note },
+    payload: { note },
   };
 }
 export function updateNoteSuccess(note) {
